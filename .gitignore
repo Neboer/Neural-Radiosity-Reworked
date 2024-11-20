@@ -33,3 +33,4 @@ MANIFEST
 # Ignore other system files
 Thumbs.db
 checkpoints/
+output_logs/

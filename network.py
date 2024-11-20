@@ -6,16 +6,18 @@ from tqdm import tqdm
 import numpy as np
 from torch.utils.tensorboard import SummaryWriter
 
-
+dataset_device = "cuda"
 # 自定义数据集
 class PoswDirectionColorDataset(Dataset):
     def __init__(self, posw, direction, color):
         # Flatten 数据并组合输入特征
         self.inputs = torch.tensor(
             np.concatenate([posw.reshape(-1, 3), direction.reshape(-1, 2)], axis=1), dtype=torch.float32
-        )
+        ).to(dataset_device)
         # Flatten 输出颜色值
-        self.targets = torch.tensor(color.reshape(-1, 3), dtype=torch.float32)
+        self.targets = torch.tensor(color.reshape(-1, 3), dtype=torch.float32).to(dataset_device)
+        print(self.inputs.device)
+        print(self.targets.device)
 
     def __len__(self):
         return self.inputs.shape[0]
@@ -62,7 +64,7 @@ def train_model(all_posws, all_directions, all_colors, epochs=10, batch_size=32,
         progress_bar = tqdm(dataloader, desc=f"Epoch {epoch + 1}/{epochs}", leave=False)
         for batch_idx, (inputs, targets) in enumerate(progress_bar):
             # 将数据移动到 GPU
-            inputs, targets = inputs.to(device), targets.to(device)
+            # inputs, targets = inputs.to(device), targets.to(device)
 
             # 前向传播
             optimizer.zero_grad()

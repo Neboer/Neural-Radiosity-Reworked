@@ -36,7 +36,7 @@ class CollectedResult:
 
         for slice in tqdm(self.slices, desc="Collapsing data slices"):
             return_data['posw'].append(slice.posw_collapsed)
-            return_data['direction'].append(slice.direction_map_collapsed)
+            return_data['direction'].append(slice.direction_collapsed)
             return_data['color'].append(slice.color_collapsed)
 
         return {
