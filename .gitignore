@@ -1,0 +1,35 @@
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignore virtual environment directories
+.venv/
+env/
+venv/
+
+# Ignore IDE configuration directories
+.idea/
+.vscode/
+
+# Ignore Python-specific files
+*.pdb
+*.egg
+*.egg-info
+dist/
+build/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore macOS specific files
+.DS_Store
+
+# Ignore other system files
+Thumbs.db
+checkpoints/
